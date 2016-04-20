@@ -8,7 +8,7 @@ get '/users/new' do
 end
 
 post '/users' do
-  @user = User.new(params[:user])
+  @user = User.new(params)
   if @user.save
     redirect '/users'
   else

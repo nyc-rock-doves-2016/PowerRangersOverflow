@@ -1,0 +1,11 @@
+<form action='/users/<%=@user.id%>' method='post'>
+  <input type='hidden' name='_method' value='put'/>
+  TITLE: <input type='text' name='user[full_name]' value="<%=@user.full_name%>"><br>
+  BODY: <input type='text' name='user[email]' value="<%=@user.email%>"><br>
+  <input type='submit' value='Update'>
+<form>
+
+<form action='/users/<%=@user.id%>' method='post'>
+  <input type='hidden' name='_method' value='delete'/>
+  <input type='submit' value='Delete'>
+</form>
