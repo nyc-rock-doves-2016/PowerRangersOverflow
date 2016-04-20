@@ -8,7 +8,7 @@ get '/tags/new' do
 end
 
 post '/tags' do
-  @tag = Tag.new(params[:tag])
+  @tag = Tag.new(params)
   if @tag.save
     redirect '/tags'
   else

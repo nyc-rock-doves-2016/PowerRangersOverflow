@@ -4,7 +4,7 @@ class CreateTagQuestions < ActiveRecord::Migration
       t.references :tag
       t.references :question
 
-      t.timestamps
+      t.timestamp null: false
     end
   end
 end
