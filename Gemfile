@@ -9,8 +9,8 @@ gem 'sinatra-contrib'
 
 gem 'activesupport'
 gem 'activerecord'
-gem 'bcrypt-ruby'
-
+gem 'bcrypt'
+gem 'pry'
 gem 'rake'
 
 gem 'shotgun'
@@ -27,3 +27,6 @@ group :test, :development do
   gem 'factory_girl'
   gem 'faker'
 end
+
+
+#####
