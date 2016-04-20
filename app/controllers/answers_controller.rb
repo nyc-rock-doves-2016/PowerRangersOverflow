@@ -6,7 +6,6 @@ end
 post '/answers' do
   # redirect_unless_logged_in NEED CHANGING!
   @answer = Answer.new(params)
-  binding.pry
   if @answer.save
     redirect '/answers'
   else
