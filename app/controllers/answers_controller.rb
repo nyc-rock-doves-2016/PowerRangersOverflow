@@ -1,11 +1,14 @@
 get '/answers/new' do
+  # redirect_unless_logged_in NEED CHANGING!
   erb :'answers/new'
 end
 
 post '/answers' do
-  @answer = Answer.new(params[:answer])
+  # redirect_unless_logged_in NEED CHANGING!
+  @answer = Answer.new(params)
+  binding.pry
   if @answer.save
-    redirect '/answers' #redirect back to answers index page
+    redirect '/answers'
   else
     erb :'answers/new'
   end
@@ -22,6 +25,7 @@ get '/answers/:id/edit' do
 end
 
 put '/answers/:id' do
+  # redirect_unless_editing_self(id) NEED CHANGING!
   @answer = Answer.find(params[:id])
   @answer.assign_attributes(params[:answer])
   if @answer.save
@@ -32,6 +36,7 @@ put '/answers/:id' do
 end
 
 delete '/answers/:id' do
+  # redirect_unless_editing_self(id) NEED CHANGING!
   @answer = Answer.find(params[:id])
   @answer.destroy
   redirect '/answers'
