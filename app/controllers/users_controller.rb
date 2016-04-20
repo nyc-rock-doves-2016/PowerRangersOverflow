@@ -1,4 +1,5 @@
 get '/users' do
+  redirect_unless_logged_in
   @users = User.all
   erb :'users/index'
 end
@@ -17,16 +18,19 @@ post '/users' do
 end
 
 get '/users/:id' do
+  redirect_unless_logged_in
   @user = User.find(params[:id])
   erb :'users/show'
 end
 
 get '/users/:id/edit' do
+  redirect_unless_editing_self(params[:id])
   @user = User.find(params[:id])
   erb :'users/edit'
 end
 
 put '/users/:id' do
+  redirect_unless_editing_self(params[:id])
   @user = User.find(params[:id])
   @user.assign_attributes(params[:user])
   if @user.save
@@ -37,6 +41,8 @@ put '/users/:id' do
 end
 
 delete '/users/:id' do
+  redirect_unless_editing_self(params[:id])
+  session.clear
   @user = User.find(params[:id])
   @user.destroy
   redirect '/users'
