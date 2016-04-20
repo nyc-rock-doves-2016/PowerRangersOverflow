@@ -36,7 +36,10 @@
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
-<row name="question" null="1" autoincrement="0">
+<row name="title" null="1" autoincrement="0">
+<datatype>CHAR</datatype>
+<default>NULL</default></row>
+<row name="content" null="1" autoincrement="0">
 <datatype>CHAR</datatype>
 <default>NULL</default></row>
 <row name="user_id" null="1" autoincrement="0">
@@ -51,7 +54,7 @@
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
-<row name="tag" null="1" autoincrement="0">
+<row name="content" null="1" autoincrement="0">
 <datatype>CHAR</datatype>
 <default>NULL</default></row>
 <key type="PRIMARY" name="">
@@ -94,7 +97,7 @@
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
-<row name="answer" null="1" autoincrement="0">
+<row name="content" null="1" autoincrement="0">
 <datatype>CHAR</datatype>
 <default>NULL</default></row>
 <row name="user_id" null="1" autoincrement="0">
@@ -117,7 +120,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="340" y="6" name="comments">
+<table x="340" y="23" name="comments">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
