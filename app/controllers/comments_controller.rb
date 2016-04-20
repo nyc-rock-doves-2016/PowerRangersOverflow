@@ -9,7 +9,7 @@ post '/comments' do
    redirect_unless_logged_in
     @comment = @commentable.comments.build(params[:answer_id])
     @comment.user_id = current_user.id
-  end
+
   if @comment.save
     redirect '/answer/show'
   else
