@@ -1,0 +1,22 @@
+<h1>Edit Post</h1>
+
+<div>
+  <table>
+      <form action='/questions' method='post'>
+        <tr>
+          <td>
+            <label for='title'>Title</label>
+            <input type='text' name='entry[title]' value='<%=@question.title%>'>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for='content'>Content</label>
+            <input type='text' name='entry[content]' value='<%=@question.content%>'>
+            <input type='submit' value='Submit'>
+          </td>
+        </tr>
+      </form>
+    </tr>
+  </table>
+</div>
