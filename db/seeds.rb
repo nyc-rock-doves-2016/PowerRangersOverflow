@@ -15,7 +15,7 @@ end
   Question.create!(
     title: Faker::Hipster.sentence(4),
     content: Faker::Hipster.paragraph(2),
-    user_id: (1..100).rand
+    user_id: User.all.sample.id
     # total_points: (-5..2000).rand
     )
 end
@@ -36,3 +36,5 @@ end
 #     votable_id: (1..10)
 #   )
 # end
+
+##
