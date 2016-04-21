@@ -1,23 +1,58 @@
 <div class="container">
+
   <div class="main-content">
 
-    <h1><%=@question.title%></h1>
-    <%=@question.content%>
-    <div>
-      <a href='/questions/<%=@question.id%>/edit'>Edit Post</a>
-      <hr>
+    <div class="questions-content">
+
+      <div class="votes">
+        <a href="#">Upvote</a>
+        <div class="score">
+          <p>#</p>
+        </div>
+        <a href="#">Downvote</a><br>
+      </div>
+
+      <div class="questions">
+        <h1><%=@question.title%></h1>
+        <p><%=@question.content%></p>
+      </div>
+
+
+      <div class="questions-post">
+        <a href='/questions/<%=@question.id%>/edit'>Edit Post</a>
+      </div>
+
+    </div>
+
   </div>
-  <div class="answer-container">
-    <% if @question.answers %>
-      <% @question.answers.each do |answer| %>
-      <div class="answer">
+
+
+
+  <div class="main-content">
+
+    <div class="answer-content">
+
+      <div class="votes">
         <a href="#">Upvote</a>
         <a href="#">Downvote</a><br>
-        <%= answer.content %><br>
-        <a href="/answers/<%=answer.id%>/edit">Edit this answer</a>
-        <hr>
       </div>
-      <% end %>
-    <% end %>
-    <%= erb :'/answers/_new_form.html' %>
+
+      <div class="answer">
+        <% if @question.answers %>
+          <% @question.answers.each do |answer| %>
+            <%= answer.content %><br>
+            <a href="/answers/<%=answer.id%>/edit">Edit this answer</a>
+          <% end %>
+        <% end %>
+      </div>
+
+      <div class="answer-post">
+        <%= erb :'/answers/_new_form.html' %>
+      </div>
+
+    </div>
+
   </div>
+
+</div>
+
