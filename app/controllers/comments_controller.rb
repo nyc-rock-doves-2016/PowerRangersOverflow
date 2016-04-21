@@ -7,7 +7,7 @@ end
 
 post '/comments' do
   @user = User.new(id: session[:user_id])
-    @comment = @user.comments.build(params)
+  @comment = @user.comments.build(params)
   if @comment.save
     redirect "/question/#{params[:question_id]}"
   else
