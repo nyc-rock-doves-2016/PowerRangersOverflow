@@ -9,7 +9,7 @@
         <p><a href="/questions/<%=question.id%>"><%=question.title%></a></p>
         <% if question.tags %>
           <% question.tags.each do |tag| %>
-            <span class="tag"><%= tag.content %></span>
+            <span class="tag"><a href='/tags/<%=tag.id%>'><%= tag.content %></a></span>
           <% end %>
         <% end %>
         <p class="asked">asked <%= Time.now - question.created_at %> ago.</p>
