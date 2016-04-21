@@ -1,0 +1,13 @@
+<form action='/comments' method='post'>
+  <table>
+    <tr>
+      <td>Content</td>
+      <td><input type='text' name='content'></td>
+    </tr>
+    <tr>
+      <input type="hidden" name="user_id" value="<%=session[:user_id]%>">
+      <td><input type='submit' value='Submit'></td>
+      <td></td>
+    </tr>
+  </table>
+</form>
