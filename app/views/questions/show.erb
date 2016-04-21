@@ -4,6 +4,12 @@
     <h1><%=@question.title%></h1>
     <%=@question.content%>
     <div>
+      <% if @question.comments %>
+        <% @question.comments.each do |comment| %>
+          <%= comment.content %>
+        <% end %>
+      <% end %>
+      <a href="/questions/<%=@question.id%>/comments/new">Add a comment to post</a>
       <a href='/questions/<%=@question.id%>/edit'>Edit Post</a>
       <hr>
   </div>
@@ -14,6 +20,12 @@
         <a href="#">Upvote</a>
         <a href="#">Downvote</a><br>
         <%= answer.content %><br>
+          <% if answer.comments %>
+            <% answer.comments.each do |comment|%>
+              <%= comment.content %>
+            <% end %>
+          <% end %>
+        <a href="/answers/<%=answer.id%>/comments/new">Add a comment</a>
         <a href="/answers/<%=answer.id%>/edit">Edit this answer</a>
         <hr>
       </div>

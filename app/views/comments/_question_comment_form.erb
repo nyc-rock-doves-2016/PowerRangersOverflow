@@ -2,10 +2,12 @@
   <table>
     <tr>
       <td>Content</td>
-      <td><input type='text' name='content'></td>
+      <td><input type='text' name='comment[content]'></td>
     </tr>
     <tr>
-      <input type="hidden" name="user_id" value="<%=session[:user_id]%>">
+      <input type='hidden' name='comment[commentable_id]' value="<%=@question.id%>">
+      <input type='hidden' name='comment[commentable_type]' value="Question">
+      <input type="hidden" name="comment[user_id]" value="<%=session[:user_id]%>">
       <td><input type='submit' value='Submit'></td>
       <td></td>
     </tr>
