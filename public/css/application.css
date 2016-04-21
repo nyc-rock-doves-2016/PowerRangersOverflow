@@ -66,10 +66,7 @@ code {
     overflow: auto;
 }
 
-
-
 .main-content {
-    background-color: yellow;
     box-sizing: border-box;
     max-width: 720px;
     margin: 0px auto;
@@ -78,29 +75,28 @@ code {
 }
 
 .answer-content {
-    background-color: red;
     box-sizing: border-box;
     position: relative;
     padding-left: 100px;
     padding-right: 20px;
-    padding-bottom: 40px;
+    padding-bottom: 70px;
     border-bottom: 1px solid #DCDCDC;
 }
 
 .answers {
     box-sizing: border-box;
-    background-color: red;
     left: 200px;
 }
 
 .answer-post {
+    box-sizing: border-box;
     display: none;
 }
 
 .votes {
-    background-color: green;
     box-sizing: border-box;
     position: absolute;
+    text-align: center;
     left: 0px;
     width: 100px;
     margin: 0px auto;
@@ -115,16 +111,21 @@ code {
 }
 
 .questions-content {
+    box-sizing: border-box;
     position: relative;
     padding-left: 100px;
-    padding-right: 20px;
-    padding-bottom: 40px;
     border-bottom: 1px solid #DCDCDC;
+}
+
+.questions-comments{
+    box-sizing: border-box;
+    position: relative;
+    padding-left: 100px;
+    padding-bottom: 50px;
 }
 
 .questions {
     box-sizing: border-box;
-    background-color: red;
     left: 200px;
 }
 
