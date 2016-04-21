@@ -1,0 +1,16 @@
+    <form action='/questions' method='post'>
+      <table>
+      <tr>
+        <td>Title</td>
+        <td><input type='text' name='entry[title]'></td>
+      </tr>
+      <tr>
+        <td>Content</td>
+        <td><input type='text' name='entry[content]'></td>
+      </tr>
+      <tr>
+        <input type="hidden" name="entry[user_id]" value="<%=session[:user_id]%>">
+        <td><input type='submit' value='Submit'></td>
+      </tr>
+    </table>
+    </form>

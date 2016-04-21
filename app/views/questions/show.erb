@@ -1,6 +1,23 @@
-<h1><%=@question.title%></h1>
-<%=@question.user%>
-<%=@question.content%>
-<div>
-  <a href='/questions/<%=@question.id%>/edit'>Edit Post</a>
-</div>
+<div class="container">
+  <div class="main-content">
+
+    <h1><%=@question.title%></h1>
+    <%=@question.content%>
+    <div>
+      <a href='/questions/<%=@question.id%>/edit'>Edit Post</a>
+      <hr>
+  </div>
+  <div class="answer-container">
+    <% if @question.answers %>
+      <% @question.answers.each do |answer| %>
+      <div class="answer">
+        <a href="#">Upvote</a>
+        <a href="#">Downvote</a><br>
+        <%= answer.content %><br>
+        <a href="/answers/<%=answer.id%>/edit">Edit this answer</a>
+        <hr>
+      </div>
+      <% end %>
+    <% end %>
+    <%= erb :'/answers/_new_form.html' %>
+  </div>

@@ -7,7 +7,7 @@ post '/answers' do
   # redirect_unless_logged_in NEED CHANGING!
   @answer = Answer.new(params)
   if @answer.save
-    redirect '/answers'
+    redirect "/questions/#{params[:question_id]}"
   else
     erb :'answers/new'
   end
@@ -28,7 +28,7 @@ put '/answers/:id' do
   @answer = Answer.find(params[:id])
   @answer.assign_attributes(params[:answer])
   if @answer.save
-    redirect '/answers'
+    redirect "/questions/#{@answer.question_id}"
   else
     erb :'answers/edit'
   end
@@ -37,6 +37,7 @@ end
 delete '/answers/:id' do
   # redirect_unless_editing_self(id) NEED CHANGING!
   @answer = Answer.find(params[:id])
+  @question_id = @answer.question_id
   @answer.destroy
-  redirect '/answers'
+  redirect "/questions/#{@question_id}"
 end

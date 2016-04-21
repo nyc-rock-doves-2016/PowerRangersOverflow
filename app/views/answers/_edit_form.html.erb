@@ -1,0 +1,23 @@
+<form action='/answers/<%= @answer.id %>' method='post'>
+  <input type='hidden' name='_method' value='put'/>
+  <table>
+    <tr>
+      <td>Answer:</td>
+      <td><input type='text' name='answer[content]' value='<%=@answer.content%>'></td>
+    </tr>
+    <tr>
+      <td><input type='submit' value='Submit'></td>
+</form>
+      <td></td>
+    </tr>
+    <tr>
+      <td><form action='/answers/<%=@answer.id%>' method='post'>
+            <input type='hidden' name='_method' value='delete'/>
+            <input type='submit' value='Delete'>
+          </form></td>
+    </tr>
+  </table>
+
+
+
+
