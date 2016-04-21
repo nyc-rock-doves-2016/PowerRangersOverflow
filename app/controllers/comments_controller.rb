@@ -9,7 +9,9 @@ end
 
 post '/comments' do
   @comment = Comment.new(params[:comment])
-  if @comment.save
+  if @comment.save && params[:comment][:commentable_type] == "Question"
+    redirect "/questions/#{@comment.commentable.id}"
+  elsif @comment.save && params[:comment][:commentable_type] == "Answer"
     redirect "/questions/#{@comment.commentable.question.id}"
   else
     erb :'questions/index'
