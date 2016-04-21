@@ -23,18 +23,20 @@ end
 # create Answers
 20.times do
   Answer.create!(
-    content: Faker::StarWars.quote
+    content: Faker::StarWars.quote,
+    user_id: User.all.sample.id,
+    question_id: Question.all.sample.id
     )
 end
 
 # create Votes
-# 200.times do
-#   Votes.create!(
-#     user_id: (1..20).rand,
-#     value: [1, -1].sample,
-#     votable_type: ["comments", "answers", "questions"].sample,
-#     votable_id: (1..10)
-#   )
-# end
+200.times do
+  Vote.create!(
+    user_id: User.all.sample.id,
+    value: [1, -1].sample,
+    votable_type: ["Comment", "Answer", "Question"].sample,
+    votable_id: (1..10)
+  )
+end
 
 ##
