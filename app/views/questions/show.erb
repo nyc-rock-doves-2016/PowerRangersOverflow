@@ -6,19 +6,14 @@
 
       <div class="votes">
         <a href="#">Upvote</a>
-        <div class="score">
-          <p>#</p>
-        </div>
+
+          <p class="score">#</p>
         <a href="#">Downvote</a><br>
       </div>
 
       <div class="questions">
         <h1><%=@question.title%></h1>
         <p><%=@question.content%></p>
-      </div>
-
-
-      <div class="questions-post">
         <a href='/questions/<%=@question.id%>/edit'>Edit Post</a>
       </div>
 
@@ -30,6 +25,7 @@
 
   <div class="main-content">
 
+      <% if @question.answers %>
     <div class="answer-content">
 
       <div class="votes">
@@ -37,14 +33,13 @@
         <a href="#">Downvote</a><br>
       </div>
 
-      <div class="answer">
-        <% if @question.answers %>
-          <% @question.answers.each do |answer| %>
-            <%= answer.content %><br>
-            <a href="/answers/<%=answer.id%>/edit">Edit this answer</a>
-          <% end %>
+      <% @question.answers.each do |answer| %>
+      <div class="answers">
+          <%= answer.content %><br>
+          <a href="/answers/<%=answer.id%>/edit">Edit this answer</a>
         <% end %>
       </div>
+      <% end %>
 
       <div class="answer-post">
         <%= erb :'/answers/_new_form.html' %>
