@@ -1,12 +1,9 @@
 <div class="container">
-
   <div class="main-content">
-
     <div class="questions-content">
 
       <div class="votes">
         <a href="#">Upvote</a>
-
           <p class="score">#</p>
         <a href="#">Downvote</a><br>
       </div>
@@ -19,13 +16,19 @@
 
     </div>
 
-  </div>
-
-
+    <div class="questions-comments">
+      <% if @question.comments %>
+        <% @question.comments.each do |comment| %>
+          <%= comment.content %>
+        <% end %>
+      <% end %>
+      <a href="/questions/<%=@question.id%>/comments/new">Add a comment to post</a>
+      <a href='/questions/<%=@question.id%>/edit'>Edit Post</a>
+    </div>
 
   <div class="main-content">
 
-      <% if @question.answers %>
+    <% if @question.answers %>
     <div class="answer-content">
 
       <div class="votes">
@@ -35,19 +38,31 @@
 
       <% @question.answers.each do |answer| %>
       <div class="answers">
-          <%= answer.content %><br>
+        <%= answer.content %><br>
+        <a href="/answers/<%=answer.id%>/edit">Edit this answer</a>
+          <% if answer.comments %>
+            <% answer.comments.each do |comment|%>
+
+              <div class="questions-comments">
+                <%= comment.content %>
+                <% if session[:id] == comment.user_id %>
+                  <a href="/comments/<%=comment.id%>/edit">Edit Comment</a>
+                <% end %>
+              </div>
+            <% end %>
+          <% end %>
+        <% if session[:id] == answer.user_id %>
           <a href="/answers/<%=answer.id%>/edit">Edit this answer</a>
         <% end %>
-      </div>
       <% end %>
+      <% end %>
+        <a href="/answers/<%=answer.id%>/comments/new">Add a comment</a>
+      </div>
 
       <div class="answer-post">
         <%= erb :'/answers/_new_form.html' %>
       </div>
-
     </div>
-
   </div>
-
 </div>
 

@@ -1,0 +1,15 @@
+<form action='/comments' method='post'>
+  <table>
+    <tr>
+      <td>Content</td>
+      <td><input type='text' name='comment[content]'></td>
+    </tr>
+    <tr>
+      <input type='hidden' name='comment[commentable_id]' value="<%=@answer.id%>">
+      <input type='hidden' name='comment[commentable_type]' value="Answer">
+      <input type="hidden" name="comment[user_id]" value="<%=session[:user_id]%>">
+      <td><input type='submit' value='Submit'></td>
+      <td></td>
+    </tr>
+  </table>
+</form>

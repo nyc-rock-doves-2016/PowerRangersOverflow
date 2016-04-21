@@ -1,15 +1,16 @@
-get '/comments/new' do
-    @question = Question.find_by(params[:question_id])
-    @comment = Comment.new
-
-    erb :'comments/new'
+get '/:commentable_type/:commentable_id/comments/new' do
+    if params[:commentable_type] == 'questions'
+      @question = Question.find(params[:commentable_id])
+    else
+      @answer = Answer.find(params[:commentable_id])
+    end
+  erb :'comments/new'
 end
 
 post '/comments' do
-  @user = User.new(id: session[:user_id])
-  @comment = @user.comments.build(params)
+  @comment = Comment.new(params[:comment])
   if @comment.save
-    redirect "/question/#{params[:question_id]}"
+    redirect "/questions/#{@comment.commentable.question.id}"
   else
     erb :'questions/index'
   end
@@ -35,4 +36,3 @@ delete '/comments/:id' do
   @comment.destroy
   redirect '/comments'
 end
-

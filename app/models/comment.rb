@@ -4,6 +4,4 @@ class Comment < ActiveRecord::Base
   has_many :votes, as: :votable
 
   validates :content, presence: true
-
-
 end
