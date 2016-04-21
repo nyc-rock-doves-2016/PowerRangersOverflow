@@ -1,0 +1,15 @@
+<div class="edit_answer">
+<form action='/answers/<%= @answer.id %>' method='post'>
+  <input type="hidden" name="_method" value="put">
+    <h3>Update your Answer</h3>
+    <table>
+      <tr>
+        <td>Answer:</td>
+        <td><input type='text' name='answer[content]' value='<%= @answer.content %>'></label></td>
+      </tr>
+    </table>
+    <input class='button' type='submit' value='Update'><br>
+  </form>
+</div>
+
+

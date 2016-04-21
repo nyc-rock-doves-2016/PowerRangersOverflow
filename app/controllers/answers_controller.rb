@@ -28,7 +28,7 @@ put '/answers/:id' do
   @answer = Answer.find(params[:id])
   @answer.assign_attributes(params[:answer])
   if @answer.save
-    redirect '/answers'
+    redirect '/answers/new'
   else
     erb :'answers/edit'
   end
