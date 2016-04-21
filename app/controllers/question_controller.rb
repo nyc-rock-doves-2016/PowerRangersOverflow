@@ -27,6 +27,10 @@ get '/questions/:id' do
 end
 
 get '/questions/:id/edit' do
+  @question = Question.find(params[:id])
+  @tags = @question.tags.map do |tag|
+    tag.content
+  end
   erb :'questions/edit'
 end
 
