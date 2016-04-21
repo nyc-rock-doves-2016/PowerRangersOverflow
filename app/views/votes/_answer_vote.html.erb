@@ -1,0 +1,14 @@
+<form action='/votes' method='post'>
+  <input type='hidden' name='vote[value]' value='1'>
+  <input type="hidden" name="vote[user_id]" value="<%=session[:user_id]%>">
+  <input type="hidden" name="vote[votable_type]" value="Answer">
+  <input type="hidden" name="vote[votable_id]" value="<%=answer.id%>">
+  <input type='submit' value='Up'>
+</form>
+<form action='/votes' method='post'>
+  <input type='hidden' name='vote[value]' value='-1'>
+  <input type="hidden" name="vote[user_id]" value="<%=session[:user_id]%>">
+  <input type="hidden" name="vote[votable_type]" value="Answer">
+  <input type="hidden" name="vote[votable_id]" value="<%=answer.id%>">
+  <input type='submit' value='Down'>
+</form>
