@@ -14,6 +14,9 @@
         <a href="#">Upvote</a>
         <a href="#">Downvote</a><br>
         <%= answer.content %><br>
+          <% answer.comments.each do |comment|%>
+          <% end %>
+        <a href="/answers/<%=answer.id%>/comments/new">Add a comment</a>
         <a href="/answers/<%=answer.id%>/edit">Edit this answer</a>
         <hr>
       </div>
