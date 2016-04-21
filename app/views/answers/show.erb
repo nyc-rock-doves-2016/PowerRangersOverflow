@@ -1,6 +1,7 @@
-<%= @answer.content %>
+<div class="container">
+  <div class="main-content">
+    <h1><%= @answer.content %></h1>
+      <%= erb :'answers/_show_answer.html' %>
+  </div>
+</div>
 
-<form action='/answers/<%=@answer.id%>' method='post'>
-  <input type='hidden' name='_method' value='delete'/>
-  <input type='submit' value='Delete'>
-<form>
