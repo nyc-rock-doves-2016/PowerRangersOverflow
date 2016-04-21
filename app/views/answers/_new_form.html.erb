@@ -1,0 +1,17 @@
+<form action='/answers' method='post'>
+  <table>
+    <tr>
+      <td>Answer:</td>
+      <td><input type='textfield' name='content'></td>
+    </tr>
+    <tr>
+          <input type='hidden' name='question_id' value='<%= @question.id %>'>
+          <input type='hidden' name='user_id' value='<%= session[:user_id]%>'>
+      <td><input type='submit' value='Submit'></td>
+      <td></td>
+    </tr>
+  </table>
+</form>
+
+
+

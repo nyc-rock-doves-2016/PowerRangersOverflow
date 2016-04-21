@@ -1,0 +1,9 @@
+<div class="container">
+  <div class="main-content">
+  <h1>All Tags</h1>
+      <% @tags.each do |tag| %>
+        <a href="/tags/<%=tag.id%>"><%= tag.content %></a>
+        <hr>
+      <% end %>
+  </div>
+</div>
