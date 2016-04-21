@@ -4,4 +4,8 @@ class Comment < ActiveRecord::Base
   has_many :votes, as: :votable
 
   validates :content, presence: true
+
+  def points
+    votes.sum(:value)
+  end
 end
