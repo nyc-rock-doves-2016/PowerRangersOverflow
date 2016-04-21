@@ -11,12 +11,8 @@ post '/questions' do
   @question = Question.new(title: params[:entry][:title],content: params[:entry][:content], user_id: session[:user_id])
   @tag_names = params[:entry][:tags].split(' ')
   @tag_names.each do |tag_name|
-    tag = Tag.find_by(content: tag_name)
-    if tag
-      @question.tags << tag
-    else
-      @question.tags << Tag.new(content: tag_name)
-    end
+    tag = Tag.find_or_create_by(content: tag_name)
+    @question.tags << tag
   end
   if @question.save
     redirect :'questions'
