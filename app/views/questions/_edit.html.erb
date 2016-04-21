@@ -9,12 +9,16 @@
         <td><input type='text' name='entry[content]' value='<%=@question.content%>'></td>
       </tr>
       <tr>
+        <td>Tags</td>
+        <td><input type='text' name='entry[tags]' value='<%=@tags.join(' ')%>'</td>
+      </tr>
+      <tr>
         <td><input type='submit' value='Submit'></td>
         <td></td>
       </tr>
     </table>
     </form>
-    <form action='/questions/<%=question.id%>' method='post'>
+    <form action='/questions/<%=@question.id%>' method='post'>
       <input type='hidden' name='_method' value='delete'>
       <input type='submit' value='Delete Question'>
     </form>
