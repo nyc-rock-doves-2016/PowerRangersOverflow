@@ -1,20 +1,20 @@
-get '/:commentable_type/:commentable_id/comments/new' do
+get '/:commentable_type/:id/comments/new' do
   redirect_unless_logged_in
     case params[:commentable_type]
-      when 'Question' then @question = Question.find(params[:commentable_id])
-      when 'Answer'   then @answer = Answer.find(params[:commentable_id])
+      when 'questions' then @question = Question.find(params[:id])
+      when 'answers'   then @answer = Answer.find(params[:id])
     end
   erb :'comments/new'
 end
 
 post '/comments' do
-  if request.xhr?
-    erb :'/comments/_question_comment_form'
-  else
-
-  end
   @comment = Comment.new(params[:comment])
   if @comment.save
+  # if request.xhr?
+  #   erb :'/comments/_question_comment_form'
+  # else
+
+  # end
     case params[:comment][:commentable_type]
       when "Question" then redirect "/questions/#{@comment.commentable.id}"
       when "Answer" then   redirect "/questions/#{@comment.commentable.question.id}"
@@ -34,8 +34,8 @@ put '/comments/:id' do
   @comment.assign_attributes(params[:comment])
   if @comment.save
     case @comment.commentable_type
-      when "Question" then redirect "/questions/#{@comment.commentable.id}"
-      when "Answer"   then redirect "/questions/#{@comment.commentable.question.id}"
+      when "questions" then redirect "/questions/#{@comment.commentable.id}"
+      when "answers"   then redirect "/questions/#{@comment.commentable.question.id}"
     end
   else
     erb :'questions/index'
@@ -45,8 +45,8 @@ end
 delete '/comments/:id' do
   @comment = Comment.find(params[:id])
   case @comment.commentable_type
-    when "Question" then @question = @comment.commentable
-    when "Answer"   then @question = @comment.commentable.question
+    when "questions" then @question = @comment.commentable
+    when "answers"   then @question = @comment.commentable.question
   end
   @comment.destroy
   redirect "/questions/#{@question.id}"

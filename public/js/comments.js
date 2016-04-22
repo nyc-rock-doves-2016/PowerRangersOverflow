@@ -25,7 +25,7 @@ $(document).ready(function() {
 
 
 //this goes in question show page
-<a id="new-comment" href="/questions/<%=@question.id%>/comments/new">Add a comment to post</a><br>
-  <div id="comment-post">
-        <%= erb :'/comments/_question_comment_form' %>
-      </div>
+// <a id="new-comment" href="/questions/<%=@question.id%>/comments/new">Add a comment to post</a><br>
+//   <div id="comment-post">
+//         <%= erb :'/comments/_question_comment_form' %>
+//       </div>
