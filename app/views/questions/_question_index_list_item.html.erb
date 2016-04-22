@@ -5,5 +5,5 @@
       <span class="tag"><a href='/tags/<%=tag.id%>'><%= tag.content %></a></span>
     <% end %>
   <% end %>
-  <p class="asked">asked <%= Time.now - question.created_at %> ago.</p>
+  <p class="asked">asked on <%= question.created_at %></p>
 </div>
