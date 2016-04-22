@@ -1,10 +1,11 @@
 <div class="container">
+
   <div class="main-content">
     <div class="questions-content">
 
       <div class="votes">
         <a href="#">Up</a>
-          <p class="score"><%=@question.points || 0 %></p>
+          <p class="score">#</p>
         <a href="#">Down</a><br>
       </div>
 
@@ -14,67 +15,39 @@
         <% if session[:user_id].to_i == @question.user_id %>
           <a href='/questions/<%=@question.id%>/edit'>Edit Post</a>
         <% end %>
-
       </div>
 
-    </div>
-
-    <div class="questions-comments">
-      <a id='new-question-comment' href="/questions/<%=@question.id%>/comments/new">Add a comment to post</a>
-      <div id="questions-comments-post">
-         <%= erb :'/comments/_question_comment_form'%>
-       </div>
-    <% if @question.comments %>
-      <% @question.comments.each do |comment|%>
-        <%= erb :'/comments/_questions_comment.html', locals: {comment: comment} %>
+      <div class="questions-comments">
+        <a id='new-question-comment' href="/questions/<%=@question.id%>/comments/new">Add a comment to post</a>
+        <div id="questions-comments-post">
+           <%= erb :'/comments/_question_comment_form'%>
+         </div>
+      <% if @question.comments %>
+        <% @question.comments.each do |comment|%>
+          <%= erb :'/comments/_questions_comment.html', locals: {comment: comment} %>
+        <% end %>
       <% end %>
-    <% end %>
+      </div>
     </div>
+  </div>
 
 
   <div class="main-content">
-    <a id="new-answer" href="/answers/new">Add an answer</a><br>
-      <div id="answer-post">
-        <%= erb :'/answers/_new_form.html' %>
-      </div>
-    <% if @question.answers %>
-
-    <div class="answer-content">
-      <div class="votes">
-        <a href="#">Up</a>
-          <p class="score">#</p>
-        <a href="#">Down</a><br>
-      </div>
-
-      <% @question.answers.each do |answer| %>
-      <div class="answers-comments">
-        <%= answer.content %><br>
-        <a id='new-answer-comment' href="/answers/<%=answer.id%>/comments/new">Add a comment</a>
-        <div id="answers-comments-post">
-          <%= erb :'/comments/_answer_comment_form', locals: { answer: answer } %>
-        </div>
-          <% if answer.comments %>
-
-            <% answer.comments.each do |comment|%>
-              <%= erb :'/comments/_answers_comment.html', locals: { comment: comment } %>
-            <% end %>
-
-          <% end %>
-
-        <% if answer.user_id == session[:user_id].to_i %>
-          <a href="/answers/<%=answer.id%>/edit">Edit this answer</a>
-        <% end %>
-
-
-        </div>
+      <% if @question.answers %>
+      <div id="answers-content" >
+          <% @question.answers.each do |answer| %>
+              <!-- votes go here -->
+            <%= erb :'/answers/_answer.html', locals: {answer: answer}%>
       <% end %>
-      <% end %>
-      <a href="/answers/new">Add an answer</a>
-      <div class="answer-post">
-        <%= erb :'/answers/_new_form.html' %>
-      </div>
-
     </div>
+    <% end %>
+
+
+      <button id="answer_button" class="button center">Answer</button>
+      </div id="answer-post">
+        <%= erb :'/answers/_new_form.html' %>
+      </div>
   </div>
 </div>
+
 

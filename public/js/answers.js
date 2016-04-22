@@ -2,8 +2,9 @@ $(document).ready(function(){
 
   $('#answer_button').on('click',function(event){
     event.preventDefault();
-    $(this).toggle();
-    $('#answer_new_form').show();
+    var $target = $(event.target)
+    $target.hide();
+    $('.answer-post').show();
 
   });
 
@@ -11,17 +12,16 @@ $(document).ready(function(){
     event.preventDefault();
     var $target = $(event.target);
     requestOptions = {
-      url: $target.attr("action"),
+      url:    $target.attr("action"),
       method: $target.attr("method"),
-      data: $target.serialize()
+      data:   $target.serialize()
     };
     requestObject = $.ajax(requestOptions);
     requestObject.done(function(response){
-      $('.answer-content').append(response);
+      $('#answers-content').append(response);
     });
     $target.hide();
-    $('#answer_new_form')[0].reset();
-    $('#answer_button').toggle();
+    $('#answer_button').show();
   });
 
 });

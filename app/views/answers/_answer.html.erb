@@ -1,0 +1,23 @@
+    <%= answer.content %><br>
+      <a id='new-answer-comment' href="/answers/<%=answer.id%>/comments/new">Add a comment</a>
+      <div id="answers-comments-post">
+        <%= erb :'/comments/_answer_comment_form', locals: { answer: answer } %>
+      </div>
+      <% if answer.comments %>
+       <div class="answers-comments">
+          <% answer.comments.each do |comment|%>
+            <%= erb :'/comments/_answers_comment.html', locals: { comment: comment } %>
+          <% end %>
+      </div>
+      <% end %>
+
+    <% if answer.user_id == session[:user_id].to_i %>
+      <a href="/answers/<%=answer.id%>/edit">Edit this answer</a>
+    <% end %>
+
+
+
+
+
+
+

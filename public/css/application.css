@@ -97,6 +97,10 @@ code {
     box-sizing: border-box;
     display: none;
 }
+#answer_new_form {
+    box-sizing: border-box;
+    display: none;
+}
 
 .votes {
     box-sizing: border-box;

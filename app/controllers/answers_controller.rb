@@ -6,10 +6,14 @@ end
 post '/answers' do
   redirect_unless_logged_in
   @answer = Answer.new(params)
-  if @answer.save
-    redirect "/questions/#{params[:question_id]}"
+  if request.xhr? && @answer.save
+    erb :'answers/_answer.html', locals: {answer: @answer}, layout: false
   else
-    erb :'answers/new'
+    if @answer.save
+      redirect "/questions/#{params[:question_id]}"
+    else
+      erb :'answers/new'
+    end
   end
 end
 
