@@ -10,14 +10,22 @@ end
 post '/comments' do
   @comment = Comment.new(params[:comment])
   if @comment.save
-  # if request.xhr?
-  #   erb :'/comments/_question_comment_form'
-  # else
+   if request.xhr?
 
-  # end
     case params[:comment][:commentable_type]
-      when "Question" then redirect "/questions/#{@comment.commentable.id}"
-      when "Answer" then   redirect "/questions/#{@comment.commentable.question.id}"
+      when "Question"
+        @question = Question.find(params[:comment][:commentable_id])
+        "#{erb :'/comments/_questions_comment.html', layout: false, locals: { comment: @comment } }"
+      when "Answer"
+        @answer = Answer.find(params[:comment][:commentable_id])
+        "#{erb :'/comments/_answers_comment.html', layout: false, locals: { comment: @comment } }"
+      end
+
+    else
+      case params[:comment][:commentable_type]
+        when "Question" then redirect "/questions/#{@comment.commentable.id}"
+        when "Answer" then   redirect "/questions/#{@comment.commentable.question.id}"
+      end
     end
   else
     erb :'questions/index'

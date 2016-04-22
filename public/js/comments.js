@@ -1,26 +1,56 @@
 $(document).ready(function() {
-  $("#new-comment").on("click", function(event){
+  $("#new-question-comment").on("click", function(event){
     event.preventDefault();
-     // alert("Hey your not allowed here")
-    $("#comment-post").show();
-    $("#new-comment").hide();
+    $("#questions-comments-post").show();
+    $('#new-question-comment').hide();
   });
 
 
-  $('#new-comment-form').on('submit', function(event){
+  $('.question-post-form').on('submit', function(event){
     event.preventDefault();
-
-      var $target = $(event.target)
+      var $target = $(event.target);
 
     $.ajax ({
       url: $target.attr('action'),
       method: $target.attr('method'),
-      dataType: $target.serialize(),
+      data: $target.serialize()
     }).done(function(response){
-      console.log(response)}).fail(function(error){
+     $('.questions-comments').append(response);
+        $(".question-post-form")[0].reset();
+        $("#new-question-comment").show();
+        $("#questions-comments-post").hide();
+      }).fail(function(error){
         console.log(error);
       });
   });
+
+
+
+$("#new-answer-comment").on("click", function(event){
+    event.preventDefault();
+    $("#answers-comments-post").show();
+    $('#new-answer-comment').hide();
+  });
+
+
+  $('.answer-post-form').on('submit', function(event){
+    event.preventDefault();
+      var $target = $(event.target);
+
+    $.ajax ({
+      url: $target.attr('action'),
+      method: $target.attr('method'),
+      data: $target.serialize()
+    }).done(function(response){
+     $('.answers-comments').append(response);
+        $(".answer-post-form")[0].reset();
+        $("#new-answer-comment").show();
+        $("#answers-comments-post").hide();
+      }).fail(function(error){
+        console.log(error);
+      });
+  });
+
 });
 
 
