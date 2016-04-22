@@ -16,6 +16,8 @@
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src="/js/application.js"></script>
+  <script src="/js/questions.js"></script>
+
 
   <title></title>
 </head>
@@ -27,7 +29,7 @@
         <td><a href="/questions">Questions</a></td>
         <td><a href="/tags">Tags</a></td>
         <td><a href="/users">Users</a></td>
-        <td><a id='new-question' href="/questions/new">Ask Question</a></td>
+        <td><a class='new-question' href="/questions/new">Ask Question</a></td>
         <td><form action='/logout' method='post'>
           <input type='hidden' name='_method' value='delete'>
           <input id='logout' type='submit' value='Logout'>

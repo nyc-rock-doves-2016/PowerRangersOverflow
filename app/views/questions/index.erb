@@ -1,19 +1,13 @@
 <div class="container">
   <div class="main-content">
     <h1>All Questions</h1>
-
+      <div id="question-post">
+        <%= erb :'/questions/_new.html' %>
+      </div>
       <div class="stats">
       </div>
       <% @questions.each do |question| %>
-      <div class="list-question">
-        <p><a href="/questions/<%=question.id%>"><%=question.title%></a></p>
-        <% if question.tags %>
-          <% question.tags.each do |tag| %>
-            <span class="tag"><a href='/tags/<%=tag.id%>'><%= tag.content %></a></span>
-          <% end %>
-        <% end %>
-        <p class="asked">asked <%= Time.now - question.created_at %> ago.</p>
-      </div>
+        <%= erb :'/questions/_question_index_list_item.html', locals: {question: question } %>
       <%end%>
     </div>
   </div>

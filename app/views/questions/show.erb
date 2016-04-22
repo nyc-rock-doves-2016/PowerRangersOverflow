@@ -36,10 +36,13 @@
 
 
   <div class="main-content">
-
+    <a id="new-answer" href="/answers/new">Add an answer</a><br>
+      <div id="answer-post">
+        <%= erb :'/answers/_new_form.html' %>
+      </div>
     <% if @question.answers %>
-    <div class="answer-content">
 
+    <div class="answer-content">
       <div class="votes">
         <a href="#">Up</a>
           <p class="score">#</p>
@@ -68,9 +71,7 @@
       <% end %>
       <% end %>
 
-      <div class="answer-post">
-        <%= erb :'/answers/_new_form.html' %>
-      </div>
+
     </div>
   </div>
 </div>
