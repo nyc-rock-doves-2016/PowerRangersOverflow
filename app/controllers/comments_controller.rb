@@ -8,6 +8,11 @@ get '/:commentable_type/:commentable_id/comments/new' do
 end
 
 post '/comments' do
+  if request.xhr?
+    erb :'/comments/_question_comment_form'
+  else
+
+  end
   @comment = Comment.new(params[:comment])
   if @comment.save && params[:comment][:commentable_type] == "Question"
     redirect "/questions/#{@comment.commentable.id}"
