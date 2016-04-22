@@ -1,0 +1,6 @@
+<div class="questions-comment">
+  <%= comment.content %>
+  <% if comment.user_id == session[:user_id].to_i %>
+    <a href="/comments/<%=comment.id%>/edit">Edit Comment</a>
+  <% end %>
+</div>

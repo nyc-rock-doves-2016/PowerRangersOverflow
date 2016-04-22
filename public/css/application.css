@@ -158,10 +158,16 @@ nav {
     display: inline;
 }
 
+#questions-comments-post {
+    box-sizing: border-box;
+    display: none;
+}
 
 
-
-
+#answers-comments-post {
+    box-sizing: border-box;
+    display: none;
+}
 
 
 

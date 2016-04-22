@@ -20,18 +20,15 @@
     </div>
 
     <div class="questions-comments">
+      <a id='new-question-comment' href="/questions/<%=@question.id%>/comments/new">Add a comment to post</a>
+      <div id="questions-comments-post">
+         <%= erb :'/comments/_question_comment_form'%>
+       </div>
     <% if @question.comments %>
       <% @question.comments.each do |comment|%>
-        <div class="questions-comments">
-          <%= comment.content %>
-        <% if comment.user_id == session[:user_id].to_i %>
-          <a href="/comments/<%=comment.id%>/edit">Edit Comment</a>
-        <% end %>
-        </div>
+        <%= erb :'/comments/_questions_comment.html', locals: {comment: comment} %>
       <% end %>
     <% end %>
-      <br>
-      <a href="/questions/<%=@question.id%>/comments/new">Add a comment to post</a><br>
     </div>
 
 
@@ -50,27 +47,32 @@
       </div>
 
       <% @question.answers.each do |answer| %>
-      <div class="answers">
+      <div class="answers-comments">
         <%= answer.content %><br>
+        <a id='new-answer-comment' href="/answers/<%=answer.id%>/comments/new">Add a comment</a>
+        <div id="answers-comments-post">
+          <%= erb :'/comments/_answer_comment_form', locals: { answer: answer } %>
+        </div>
           <% if answer.comments %>
-            <% answer.comments.each do |comment|%>
 
-              <div class="answers-comments">
-                <%= comment.content %>
-                <% if comment.user_id == session[:user_id].to_i %>
-                  <a href="/comments/<%=comment.id%>/edit">Edit Comment</a>
-                <% end %>
-              </div>
+            <% answer.comments.each do |comment|%>
+              <%= erb :'/comments/_answers_comment.html', locals: { comment: comment } %>
             <% end %>
+
           <% end %>
+
         <% if answer.user_id == session[:user_id].to_i %>
           <a href="/answers/<%=answer.id%>/edit">Edit this answer</a>
         <% end %>
-          <a href="/answers/<%=answer.id%>/comments/new">Add a comment</a>
+
+
         </div>
       <% end %>
       <% end %>
-
+      <a href="/answers/new">Add an answer</a>
+      <div class="answer-post">
+        <%= erb :'/answers/_new_form.html' %>
+      </div>
 
     </div>
   </div>
