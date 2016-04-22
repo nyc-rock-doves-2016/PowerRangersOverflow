@@ -20,12 +20,32 @@
   <title></title>
 </head>
 <body>
+  <% if session[:user_id] %>
   <nav>
-    <a href="/questions">Questions</a>
-    <a href="/tags">Tags</a>
-    <a href="/users">Users</a>
-    <a href="/questions/new">Ask Question</a>
+    <table>
+      <tr>
+        <td><a href="/questions">Questions</a></td>
+        <td><a href="/tags">Tags</a></td>
+        <td><a href="/users">Users</a></td>
+        <td><a id='new-question' href="/questions/new">Ask Question</a></td>
+        <td><form action='/logout' method='post'>
+          <input type='hidden' name='_method' value='delete'>
+          <input id='logout' type='submit' value='Logout'>
+        </form></td>
+      </tr>
+    </table>
   </nav>
+  <% else %>
+  <nav>
+    <table>
+      <tr>
+        <td><a href="/questions">Questions</a></td>
+        <td><a href="/tags">Tags</a></td>
+        <td><a href="/login">Login</a></td>
+      </tr>
+    </table>
+  </nav>
+  <% end %>
   <div class='Overflow'></div>
   <%= yield %>
 </div>
