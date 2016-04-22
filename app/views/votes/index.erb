@@ -1,0 +1,11 @@
+<div class='container'>
+  <div class="main-content">
+    <form method="post" action='/answers/<%=@answer.id%>/vote' class="inline">
+      <input type='hidden' name='comment[commentable_id]' value="<%=@question.id%>">
+      <input type='hidden' name='comment[commentable_type]' value="Question">
+      <input type="hidden" name="comment[user_id]" value="<%=session[:user_id]%>">
+      <button type="submit" name="submit_param" value="submit_value" class="upvote-button"></button>
+    </form>
+  </div>
+</div>
+
