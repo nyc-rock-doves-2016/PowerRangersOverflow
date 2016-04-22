@@ -5,10 +5,9 @@
       <div id="question-post">
         <%= erb :'/questions/_new.html' %>
       </div>
-      <% @questions.each do |question| %>
       <div class="stats">
-
       </div>
+      <% @questions.each do |question| %>
       <div class="list-question">
         <p><a href="/questions/<%=question.id%>"><%=question.title%></a></p>
         <% if question.tags %>

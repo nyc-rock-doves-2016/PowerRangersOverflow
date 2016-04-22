@@ -4,7 +4,7 @@
 
       <div class="votes">
         <a href="#">Up</a>
-          <p class="score">#</p>
+          <p class="score"><%=@question.points || 0 %></p>
         <a href="#">Down</a><br>
       </div>
 
@@ -20,13 +20,20 @@
     </div>
 
     <div class="questions-comments">
-      <% if @question.comments %>
-        <% @question.comments.each do |comment| %>
+    <% if @question.comments %>
+      <% @question.comments.each do |comment|%>
+        <div class="questions-comments">
           <%= comment.content %>
+        <% if comment.user_id == session[:user_id].to_i %>
+          <a href="/comments/<%=comment.id%>/edit">Edit Comment</a>
         <% end %>
-      <% end %><br>
+        </div>
+      <% end %>
+    <% end %>
+      <br>
       <a href="/questions/<%=@question.id%>/comments/new">Add a comment to post</a><br>
     </div>
+
 
   <div class="main-content">
     <a id="new-answer" href="/answers/new">Add an answer</a><br>
@@ -47,7 +54,7 @@
           <% if answer.comments %>
             <% answer.comments.each do |comment|%>
 
-              <div class="questions-comments">
+              <div class="answers-comments">
                 <%= comment.content %>
                 <% if comment.user_id == session[:user_id].to_i %>
                   <a href="/comments/<%=comment.id%>/edit">Edit Comment</a>

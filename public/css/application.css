@@ -147,8 +147,16 @@ code {
     padding-left: 30px;
 }
 
+#logout {
+    padding:5px 15px;
+    background:#ccc;
+    border:0 none;
+    cursor:pointer;
+    }
 
-
+nav {
+    display: inline;
+}
 
 
 
