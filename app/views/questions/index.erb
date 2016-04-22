@@ -1,6 +1,10 @@
 <div class="container">
   <div class="main-content">
     <h1>All Questions</h1>
+      <a id="new-question" href="/questions/new">Ask Question</a>
+      <div id="question-post">
+        <%= erb :'/questions/_new.html' %>
+      </div>
       <% @questions.each do |question| %>
       <div class="stats">
 

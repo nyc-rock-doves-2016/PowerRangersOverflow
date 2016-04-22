@@ -14,6 +14,13 @@ post '/questions' do
     tag = Tag.find_or_create_by(content: tag_name)
     @question.tags << tag
   end
+
+  if request.xhr?
+
+  else
+
+  end
+
   if @question.save
     redirect :'questions'
   else
