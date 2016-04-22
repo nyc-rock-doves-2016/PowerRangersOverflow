@@ -8,21 +8,22 @@ get '/questions/new' do
 end
 
 post '/questions' do
-  @question = Question.new(title: params[:entry][:title],content: params[:entry][:content], user_id: session[:user_id])
+  @question = Question.new(
+    title: params[:entry][:title],
+    content: params[:entry][:content],
+    user_id: session[:user_id])
   @tag_names = params[:entry][:tags].split(' ')
   @tag_names.each do |tag_name|
     tag = Tag.find_or_create_by(content: tag_name)
     @question.tags << tag
   end
 
-  if request.xhr?
-
-  else
-
-  end
-
   if @question.save
-    redirect :'questions'
+    if request.xhr?
+      erb :'/questions/_question_index_list_item.html', layout: false, locals: { question: @question }
+    else
+      redirect :'questions'
+    end
   else
     erb :'questions/new'
   end

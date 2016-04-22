@@ -1,15 +1,14 @@
 $(document).ready(function() {
 
 
-  $("#new-question").on("click", function(e){
+  $(".new-question").on("click", function(e){
     e.preventDefault();
     $("#question-post").show();
-    $("#new-question").hide();
   });
 
 
 
-  $("#new-question-form").on("submit", function(e){
+  $(".new-question-form").on("submit", function(e){
     e.preventDefault();
 
     $target = $(e.target);
@@ -18,8 +17,11 @@ $(document).ready(function() {
       url: $target.attr('action'),
       method: $target.attr('method'),
       data: $target.serialize()
+    }).done(function(response){
+      $(".new-question").show();
+      $(".main-content").append(response);
+      $(".new-question-form")[0].reset();
     });
-      debugger;
   });
 
 
